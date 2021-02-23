@@ -1,25 +1,23 @@
 package com.rexus.scrapper.api;
 
-import static java.util.stream.Collectors.toMap;
-
-import java.util.Map;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-
-import org.eclipse.microprofile.config.inject.ConfigProperty;
-
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlOption;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.rexus.scrapper.dto.MenuList;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import java.util.Map;
+
+import static java.util.stream.Collectors.toMap;
 
 @Path("/menus")
 public class MenuApi {
 
     @ConfigProperty(name = "sisrec.url")
-    private String url;
+    String url;
 
     @GET
     public MenuList getMenus() throws Exception {

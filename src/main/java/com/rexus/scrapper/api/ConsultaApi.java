@@ -20,14 +20,16 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.ws.rs.core.Response.Status.NOT_FOUND;
+
 @Path("/consultar")
 public class ConsultaApi {
 
-    private final Logger log;
-    private final DocumentReader documentReader;
+    final Logger log;
+    final DocumentReader documentReader;
 
     @ConfigProperty(name = "sisrec.url")
-    private String url;
+    String url;
 
     ConsultaApi(final Logger log, final DocumentReader documentReader) {
         this.log = log;
@@ -95,8 +97,7 @@ public class ConsultaApi {
 
             final HtmlTable table = pageResultados.querySelector("table.table-grid");
             if (table == null) {
-                response.resume(Response.status(Response.Status.NOT_FOUND).build());
-                log.warn("Nenhum registro encontrado");
+                response.resume(Response.status(NOT_FOUND).entity("Nenhum registro encontrado").build());
                 return;
             }
 
@@ -116,8 +117,11 @@ public class ConsultaApi {
 
             // Clicando no form
             log.info("Clicando no link do documento...");
-            HtmlAnchor link = (HtmlAnchor) table.getBodies().get(0)
-                    .getRows()
+            List<HtmlTableRow> tableRows = table.getBodies().get(0).getRows();
+            if (tableRows.size() < linkIndex) {
+                throw new BadRequestException("Índice inválido na lista de documentos");
+            }
+            HtmlAnchor link = (HtmlAnchor) tableRows
                     .get(linkIndex - 1)
                     .getCell(7)
                     .getFirstElementChild();

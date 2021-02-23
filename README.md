@@ -1,10 +1,21 @@
-# scrapper-api project
+# MAPA Scrapper API
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ or read instructions bellow.
+
+## Informações gerais
+
+O projeto por default sobe na porta 5000. Ou seja, para acessar as APIs, basta usar o endereço `http://localhost:5000` antes de acessar as APIs.
+
+As APIs disponíveis são:
+- `/menus`: parâmetros de pesquisa disponíveis para a API de consulta
+- `/consultar`: API de consulta dos documentos disponíveis no site (retorna os nomes dos documentos e os índices)
+- `/consultar/{indice}`: API de retorno do conteúdo do documento em formato HTML conforme o índice fornecido
 
 ## Running the application in dev mode
+
+First of all, you should install Java Development Kit (JDK) version 11. You can download it here: https://adoptopenjdk.net/releases.html.
 
 You can run your application in dev mode that enables live coding using:
 ```shell script

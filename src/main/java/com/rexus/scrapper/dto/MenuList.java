@@ -1,23 +1,37 @@
 package com.rexus.scrapper.dto;
 
-import java.util.Map;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
+import java.util.List;
+
+@Schema(description = "Lista de valores para os parâmetros de pesquisa de documentos")
 public class MenuList {
 
-    private final Map<String, String> tipos;
-    private final Map<String, String> especies;
-    private final Map<String, String> mercadorias;
-    private final Map<String, String> finalidades;
-    private final Map<String, String> blocos;
-    private final Map<String, String> paises;
+    @Schema(description = "Tipos de documento")
+    private final List<MenuItem> tipos;
+
+    @Schema(description = "Grupos da espécie animal")
+    private final List<MenuItem> especies;
+
+    @Schema(description = "Grupos da mercadoria")
+    private final List<MenuItem> mercadorias;
+
+    @Schema(description = "Finalidades do documento")
+    private final List<MenuItem> finalidades;
+
+    @Schema(description = "Blocos econômicos")
+    private final List<MenuItem> blocos;
+
+    @Schema(description = "Países")
+    private final List<MenuItem> paises;
 
     public MenuList(
-            Map<String, String> tipos,
-            Map<String, String> especies,
-            Map<String, String> mercadorias,
-            Map<String, String> finalidades,
-            Map<String, String> blocos,
-            Map<String, String> paises) {
+            List<MenuItem> tipos,
+            List<MenuItem> especies,
+            List<MenuItem> mercadorias,
+            List<MenuItem> finalidades,
+            List<MenuItem> blocos,
+            List<MenuItem> paises) {
         this.tipos = tipos;
         this.especies = especies;
         this.mercadorias = mercadorias;
@@ -26,27 +40,27 @@ public class MenuList {
         this.paises = paises;
     }
 
-    public Map<String, String> getTipos() {
+    public List<MenuItem> getTipos() {
         return tipos;
     }
 
-    public Map<String, String> getEspecies() {
+    public List<MenuItem> getEspecies() {
         return especies;
     }
 
-    public Map<String, String> getMercadorias() {
+    public List<MenuItem> getMercadorias() {
         return mercadorias;
     }
 
-    public Map<String, String> getFinalidades() {
+    public List<MenuItem> getFinalidades() {
         return finalidades;
     }
 
-    public Map<String, String> getBlocos() {
+    public List<MenuItem> getBlocos() {
         return blocos;
     }
 
-    public Map<String, String> getPaises() {
+    public List<MenuItem> getPaises() {
         return paises;
     }
 }

@@ -7,16 +7,16 @@ import org.w3c.dom.NodeList;
 import javax.enterprise.context.ApplicationScoped;
 
 /**
- * Classe de remoção de conteúdo do documento.
+ * Classe de remoção de conteúdos desnecessários do documento.
  */
 @ApplicationScoped
-public class ContentCleaner {
+public class LimpezaConteudo {
 
     /**
      * Limpa as tags consideradas desnecessárias no documento HTML.
      * @param document documento HTML no formato {@link Document}
      */
-    public void clean(Document document) {
+    public void limpar(Document document) {
         // Removendo elementos desnecessários: 1ª DIV e 1ª TABLE
         Element element = (Element) document.getElementsByTagName("div").item(0);
         element.getParentNode().removeChild(element);

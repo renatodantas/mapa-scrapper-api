@@ -1,17 +1,20 @@
 # MAPA Scrapper API
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+Este projeto é um web scrapping, que utiliza leitura de informações em HTML no site do [SISREC](http://sistemasweb.agricultura.gov.br/sisrec/manterDocumento!abrirFormConsultarDocumento.action "SISREC"), pertencente ao [MAPA](https://www.gov.br/agricultura/pt-br/ "MAPA").
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ or read instructions bellow.
+As principais tecnologias utilizadas são:
+- Quarkus
+- Java JDK 11
+- HtmlUnit (navegar entre os recursos HTML do site)
+- Apache Tika (conversor de documentos Word em HTML)
 
-## Informações gerais
+Para aprender mais sobre o Quarkus, visite seu website: https://quarkus.io/ ou leia as instruções abaixo (em inglês).
 
-O projeto por default sobe na porta 5000. Ou seja, para acessar as APIs, basta usar o endereço `http://localhost:5000` antes de acessar as APIs.
+## Informações sobre as APIs
 
-As APIs disponíveis são:
-- `/menus`: parâmetros de pesquisa disponíveis para a API de consulta
-- `/consultar`: API de consulta dos documentos disponíveis no site (retorna os nomes dos documentos e os índices)
-- `/consultar/{indice}`: API de retorno do conteúdo do documento em formato HTML conforme o índice fornecido
+O projeto, por padrão, sobe na porta `5000`. Então, deve ser considerado o endereço `http://localhost:5000` para o acesso às APIs.
+
+A documentação das APIs disponíveis pode ser consultada no endpoint: `http://localhost:5000/q/swagger-ui`
 
 ## Running the application in dev mode
 
@@ -40,12 +43,12 @@ The application is now runnable using `java -jar target/scrapper-api-1.0.0-SNAPS
 
 ## Creating a native executable
 
-You can create a native executable using: 
+You can create a native executable using:
 ```shell script
 ./mvnw package -Pnative
 ```
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
+Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
 ```shell script
 ./mvnw package -Pnative -Dquarkus.native.container-build=true
 ```

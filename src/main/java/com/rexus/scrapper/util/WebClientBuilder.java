@@ -1,4 +1,4 @@
-package com.rexus.scrapper.builder;
+package com.rexus.scrapper.util;
 
 import com.gargoylesoftware.htmlunit.ScriptException;
 import com.gargoylesoftware.htmlunit.WebClient;

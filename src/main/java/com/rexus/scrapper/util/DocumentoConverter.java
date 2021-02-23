@@ -22,7 +22,7 @@ import java.io.StringWriter;
  * Conversor de documento Word para HTML.
  */
 @ApplicationScoped
-public class DocumentConverter {
+public class DocumentoConverter {
 
     /**
      * Converte o conteúdo do Word em {@link InputStream} em string HTML.

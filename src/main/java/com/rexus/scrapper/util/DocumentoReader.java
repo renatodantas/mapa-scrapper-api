@@ -7,17 +7,17 @@ import javax.enterprise.context.ApplicationScoped;
 import java.io.InputStream;
 
 @ApplicationScoped
-public class DocumentReader {
+public class DocumentoReader {
 
-    private final ContentCleaner cleaner;
-    private final DocumentConverter converter;
+    private final LimpezaConteudo cleaner;
+    private final DocumentoConverter converter;
     private final Logger log;
 
-    public DocumentReader(
-            DocumentConverter converter,
-            ContentCleaner contentCleaner,
+    public DocumentoReader(
+            DocumentoConverter converter,
+            LimpezaConteudo limpezaConteudo,
             Logger log) {
-        this.cleaner = contentCleaner;
+        this.cleaner = limpezaConteudo;
         this.converter = converter;
         this.log = log;
     }
@@ -33,7 +33,7 @@ public class DocumentReader {
      */
     public String read(InputStream documentInputStream) throws Exception {
         final Document document = converter.convertToDocument(documentInputStream);
-        cleaner.clean(document);
+        cleaner.limpar(document);
         return converter.convertToString(document);
     }
 }

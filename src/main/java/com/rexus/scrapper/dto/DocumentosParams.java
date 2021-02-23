@@ -1,32 +1,43 @@
 package com.rexus.scrapper.dto;
 
+import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
+
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.QueryParam;
 
-public class ConsultaParams {
+/**
+ * Parâmetros de pesquisa de um documento.
+ */
+public class DocumentosParams {
 
+    @Parameter(description = "Tipo de documento")
     @QueryParam("tipo")
-    @DefaultValue("1")
+    @DefaultValue("")
     private String codigoTipo;
 
+    @Parameter(description = "Grupo da espécie animal")
     @QueryParam("especie")
-    @DefaultValue("8")
+    @DefaultValue("")
     private String codigoEspecie;
 
+    @Parameter(description = "Grupo da mercadoria")
     @QueryParam("mercadoria")
-    @DefaultValue("2")
+    @DefaultValue("")
     private String codigoMercadoria;
 
+    @Parameter(description = "Finalidade do documento")
     @QueryParam("finalidade")
-    @DefaultValue("5")
+    @DefaultValue("")
     private String codigoFinalidade;
 
+    @Parameter(description = "Bloco econômico")
     @QueryParam("bloco")
     @DefaultValue("")
     private String codigoBloco;
 
+    @Parameter(description = "País")
     @QueryParam("pais")
-    @DefaultValue("DEU")
+    @DefaultValue("")
     private String codigoPais;
 
     public String getCodigoTipo() {
